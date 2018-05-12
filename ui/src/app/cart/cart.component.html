@@ -1,0 +1,43 @@
+<div class="container">
+	<h3 align="center">You shopping cart</h3>
+</div>
+<div class="row">
+	<div class="col-sm-8">
+		<div class="container container-d">
+			<div *ngFor="let item of list; let i = index">
+				<div class="product-container">
+					<div class="row">
+						<div class="col-sm-9">
+							<h4 class="title" align="center">{{item.name}}</h4>
+						</div>
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-primary" (click)="onRemoveFromCart(i)">
+								<span class="glyphicon glyphicon-trash"> Delete</span>
+							</button>	
+						</div>
+					</div>
+					<div class="image-container">
+						<img src="{{item.imageURI}}" alt="No image">
+					</div>
+					<div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-6">
+								<STRONG>Price : {{item.price}}</STRONG>	
+							</div>
+							<div class="col-sm-6">
+								<STRONG>Date : {{item.created}}</STRONG>
+							</div>			
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<h4 align="center"><strong>TOTAL SHOPPING CART</strong></h4>
+		<hr>
+		<h4 align="center">{{total | number:'.1-5'}} RON</h4>
+	</div>
+</div>

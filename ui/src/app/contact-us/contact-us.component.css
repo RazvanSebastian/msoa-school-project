@@ -1,0 +1,15 @@
+/*.background{
+	background-image: url("http://www.wallpapers4u.org/wp-content/uploads/sunglasses_sky_background_39601_1920x1080.jpg");
+}
+*/
+.container-b{
+	background-image: url("http://www.wallpapers4u.org/wp-content/uploads/sunglasses_sky_background_39601_1920x1080.jpg");
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+
+.container-d{
+	padding-top: 50px;
+	width: 300px;
+}

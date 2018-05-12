@@ -1,0 +1,22 @@
+<div class="container-b">
+	<form [formGroup]="form" (ngSubmit)="onSubmitSaveContact()" class="container container-d">
+		<div class="form-group">
+			<h4> Contact us:</h4>
+		</div>
+		<div class="form-group">
+			<label for="name">Email </label>
+			<input [(ngModel)]="contact.email" name="email" type="email" class="form-control" formControlName="email">
+		</div>
+		<div class="form-group">
+			<label for="name">Name </label>
+			<input [(ngModel)]="contact.name" name="name" type="text" class="form-control" formControlName="name">
+		</div>
+		<div class="form-group">
+			<label for="name">Comment</label>
+			<textarea [(ngModel)]="contact.comment" name="comment" class="form-control" rows="5" formControlName="comment"></textarea>
+		</div>
+		<button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-send"></span> Send
+		</button>	
+	</form>
+</div>

@@ -1,0 +1,179 @@
+<div>
+	<h4 class="title" align="center">Our product list</h4>
+</div>
+
+<div class="list-container" *ngFor="let product of productList; let i = index">
+	<div class="row" *ngIf="i%3==0">
+		<div class="col-sm-4">
+			<div class="product-container">
+				<div class="row">
+					<div class="col-sm-9">
+						<h4 class="title" align="center">{{productList[i].name}}</h4>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" (click)="onAddToCartSubmit(productList[i])">
+							<span class="glyphicon glyphicon-shopping-cart"> Buy</span>
+						</button>	
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="{{productList[i].imageURI}}" alt="No image">
+				</div>
+				<div>
+					<div class="scrollable-text">
+						{{productList[i].description}}
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6">
+							<STRONG>Price : {{productList[i].price}}</STRONG>	
+						</div>
+						<div class="col-sm-6">
+							<STRONG>Date : {{productList[i].created}}</STRONG>
+						</div>			
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6" align="left">
+							<button type="button" class="btn btn-primary" (click)="onEditProduct(productList[i])" data-toggle="modal" data-target="#editModal">
+								<span class="glyphicon glyphicon-edit"></span> Edit
+							</button>	
+						</div>
+						<div class="col-sm-6" align="right">
+							<button type="button" class="btn btn-primary" (click)="onRemoveSubmit(productList[i])">
+								<span class="glyphicon glyphicon-remove"></span> Remove
+							</button>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4" *ngIf="productList[i+1]!=null">
+			<div class="product-container">
+				<div class="row">
+					<div class="col-sm-9">
+						<h4 class="title" align="center">{{productList[i+1].name}}</h4>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" (click)="onAddToCartSubmit(productList[i+1])">
+							<span class="glyphicon glyphicon-shopping-cart"> Buy</span>
+						</button>	
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="{{productList[i+1].imageURI}}" alt="No image">
+				</div>
+				<div>
+					<div class="scrollable-text">
+						{{productList[i+1].description}}
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6">
+							<STRONG>Price : {{productList[i+1].price}}</STRONG>	
+						</div>
+						<div class="col-sm-6">
+							<STRONG>Date : {{productList[i+1].created}}</STRONG>
+						</div>			
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6" align="left">
+							<button type="button" class="btn btn-primary" (click)="onEditProduct(productList[i+1])" data-toggle="modal" data-target="#editModal">
+								<span class="glyphicon glyphicon-edit"></span> Edit
+							</button>	
+						</div>
+						<div class="col-sm-6" align="right">
+							<button type="button" class="btn btn-primary" (click)="onRemoveSubmit(productList[i+1])">
+								<span class="glyphicon glyphicon-remove"></span> Remove
+							</button>	
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4" *ngIf="productList[i+2]!=null">
+			<div class="product-container">
+				<div class="row">
+					<div class="col-sm-9">
+						<h4 class="title" align="center">{{productList[i+2].name}}</h4>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" (click)="onAddToCartSubmit(productList[i+2])">
+							<span class="glyphicon glyphicon-shopping-cart"> Buy</span>
+						</button>	
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="{{productList[i+2].imageURI}}" alt="No image">
+				</div>
+				<div>
+					<div class="scrollable-text">
+						{{productList[i+2].description}}
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6">
+							<STRONG>Price : {{productList[i+2].price}}</STRONG>	
+						</div>
+						<div class="col-sm-6">
+							<STRONG>Date : {{productList[i+2].created}}</STRONG>
+						</div>			
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6" align="left">
+							<button type="button" class="btn btn-primary" (click)="onEditProduct(productList[i+2])" data-toggle="modal" data-target="#editModal">
+								<span class="glyphicon glyphicon-edit"></span> Edit
+							</button>	
+						</div>
+						<div class="col-sm-6" align="right">
+							<button type="button" class="btn btn-primary" (click)="onRemoveSubmit(productList[i+2])">
+								<span class="glyphicon glyphicon-remove"></span> Remove
+							</button>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Edit product</h4>
+			</div>
+			<div class="modal-body">
+				<h4 *ngIf="isSubmit">Product update successfully!</h4>
+				<form *ngIf="!isSubmit" [formGroup]="form" (ngSubmit)="onEditSubmit()" >
+					<div class="form-group">
+						<label for="name">Name </label>
+						<input [(ngModel)]="editableProduct.name" name="name" type="text" class="form-control" formControlName="name">
+					</div>
+					<div class="form-group">
+						<label for="description">Description </label>
+						<textarea [(ngModel)]="editableProduct.description" name="description" class="form-control" rows="5" formControlName="description"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="image">Image (URI image) </label>
+						<input [(ngModel)]="editableProduct.imageURI" name="imageURI" type="text" class="form-control" formControlName="image">
+					</div>
+					<div class="form-group">
+						<label for="price">Price </label>
+						<input [(ngModel)]="editableProduct.price" name="price" type="number" class="form-control" min="1" max="100" formControlName="price">
+					</div>
+					<button [disabled]="form.invalid" type="submit" class="btn btn-default">Submit</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

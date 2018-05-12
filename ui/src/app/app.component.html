@@ -1,0 +1,16 @@
+<ul class="nav nav-pills">
+	<li role="presentation"><a [routerLink]="['/home']">Home</a></li>
+	<li role="presentation"><a [routerLink]="['/products']">Products</a></li>
+	<li role="presentation"><a [routerLink]="['/add-product']">Add product</a></li>
+	<li role="presentation"><a [routerLink]="['/about']">About</a></li>
+	<li role="presentation"><a [routerLink]="['/contact']">Contact us</a></li>
+	<li class="navbar-right right-padding" role="presentation" >
+		<a [routerLink]="['/cart']" *ngIf="noProducts>0" id="notEmpty">
+			<strong >{{noProducts}}</strong><span class="glyphicon glyphicon-shopping-cart"><strong>Cart</strong></span>
+		</a>
+		<a [routerLink]="['/cart']" *ngIf="noProducts==0">
+			<strong >{{noProducts}}</strong><span class="glyphicon glyphicon-shopping-cart"><strong>Cart</strong></span>
+		</a>
+	</li>
+</ul>
+<router-outlet></router-outlet>
