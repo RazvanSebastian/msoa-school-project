@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="email-form-container">
+		<form id="emailform" (ngSubmit)="onFindSubmit()">
+			<h4>Provide your email</h4>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input [(ngModel)]="email" type="email" name="email" autocomplete="razvan.rally@yahoo.com">
+			</div>
+			<button type="submit" class="btn btn-primary">Find my order</button>	
+		</form>
+	</div>
+
+	<div class="container">
+		<div *ngFor="let order of orders; let i = index">
+			<h4>Order id : {{order.id}}</h4>
+			<div>
+				<ol> Prduct list:
+					<li *ngFor="let product of orders[i].products"> 
+						{{product.name}} {{product.price}} 
+					</li>
+				</ol>
+				<h4>Total : {{order.price}} lei</h4>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>

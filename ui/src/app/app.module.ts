@@ -11,9 +11,11 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 import { ProductService } from './shared/product.service';
-
+import { UsercartService } from './shared/usercart.service';
+import { OrderService } from './shared/order.service';
 
 @NgModule({
 	declarations: [
@@ -23,7 +25,8 @@ import { ProductService } from './shared/product.service';
 	NewProductComponent,
 	AboutComponent,
 	ContactUsComponent,
-	CartComponent
+	CartComponent,
+	OrderHistoryComponent
 	],
 	imports: [
 	BrowserModule,
@@ -56,13 +59,17 @@ import { ProductService } from './shared/product.service';
 		component: CartComponent
 	},
 	{
+		path:"order-history",
+		component: OrderHistoryComponent
+	},
+	{
 		path: '', 
 		redirectTo: 'home', 
 		pathMatch: 'full'
 	}
 	])
 	],
-	providers: [ProductService],
+	providers: [ProductService, UsercartService, OrderService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
